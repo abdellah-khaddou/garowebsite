@@ -1,251 +1,131 @@
+import { Injectable } from '@angular/core';
+import { provideRoutes } from '@angular/router';
 import { INavData } from '@coreui/angular';
+import { User } from './services/user';
 
-export const navItems: INavData[] = [
+
+export const navItemsAdmin: INavData[] = [
   {
     name: 'Dashboard',
     url: '/dashboard',
     icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
+   
   },
+ 
   {
-    title: true,
-    name: 'Theme'
-  },
-  {
-    name: 'Colors',
-    url: '/theme/colors',
-    icon: 'icon-drop'
-  },
-  {
-    name: 'Typography',
-    url: '/theme/typography',
-    icon: 'icon-pencil'
-  },
-  {
-    title: true,
-    name: 'Components'
-  },
-  {
-    name: 'Base',
-    url: '/base',
-    icon: 'icon-puzzle',
+    name: 'Users',
+    url: '/dashboard/users',
+    icon: 'icon-user',
     children: [
       {
-        name: 'Cards',
-        url: '/base/cards',
-        icon: 'icon-puzzle'
+        name: 'All',
+        url: '/dashboard/users',
+        icon: 'icon-people'
       },
       {
-        name: 'Carousels',
-        url: '/base/carousels',
-        icon: 'icon-puzzle'
+        name: 'Add User',
+        url: '/dashboard/users/add',
+        icon: 'icon-user-follow'
+      },
+    
+    ]
+  },
+ 
+  {
+    name: 'Companies',
+    url: '/dashboard/companies',
+    icon: 'icon-rocket',
+    children: [
+      {
+        name: 'All',
+        url: '/dashboard/companies',
+        icon: 'icon-grid'
       },
       {
-        name: 'Collapses',
-        url: '/base/collapses',
-        icon: 'icon-puzzle'
+        name: 'Add Companie',
+        url: '/dashboard/companies/add',
+        icon: 'icon-plus'
       },
-      {
-        name: 'Forms',
-        url: '/base/forms',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Navbars',
-        url: '/base/navbars',
-        icon: 'icon-puzzle'
-
-      },
-      {
-        name: 'Pagination',
-        url: '/base/paginations',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Popovers',
-        url: '/base/popovers',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Progress',
-        url: '/base/progress',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Switches',
-        url: '/base/switches',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Tables',
-        url: '/base/tables',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Tabs',
-        url: '/base/tabs',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Tooltips',
-        url: '/base/tooltips',
-        icon: 'icon-puzzle'
-      }
+    
+    
     ]
   },
   {
-    name: 'Buttons',
-    url: '/buttons',
+    name: 'Enumeration',
+    url: '/dashboard/enumerations',
+    icon: 'icon-wrench',
+    children: [
+      {
+        name: 'All',
+        url: '/dashboard/enumerations',
+        icon: 'icon-book-open'
+      },
+      {
+        name: 'Add Enumeration',
+        url: '/dashboard/enumerations/add',
+        icon: 'icon-penci'
+      },
+    
+    ]
+  },
+  
+];
+
+
+export const navItemsEmploye: INavData[] = [
+  {
+    name: 'Dashboard',
+    url: '/dashboard',
+    icon: 'icon-speedometer',
+   
+  },
+  
+  {
+    title: true,
+    name: 'Devices'
+  },
+  {
+    name: 'Device',
+    url: '/dashboard/devices',
     icon: 'icon-cursor',
     children: [
       {
-        name: 'Buttons',
-        url: '/buttons/buttons',
+        name: 'Add Device',
+        url: '/dashboard/devices/add',
         icon: 'icon-cursor'
       },
-      {
-        name: 'Dropdowns',
-        url: '/buttons/dropdowns',
-        icon: 'icon-cursor'
-      },
-      {
-        name: 'Brand Buttons',
-        url: '/buttons/brand-buttons',
-        icon: 'icon-cursor'
-      }
+    
     ]
   },
   {
-    name: 'Charts',
-    url: '/charts',
-    icon: 'icon-pie-chart'
-  },
-  {
-    name: 'Icons',
-    url: '/icons',
-    icon: 'icon-star',
+    name: 'Inventsion',
+    url: '/dashboard/inventsions',
+    icon: 'icon-cursor',
     children: [
       {
-        name: 'CoreUI Icons',
-        url: '/icons/coreui-icons',
-        icon: 'icon-star',
-        badge: {
-          variant: 'success',
-          text: 'NEW'
-        }
+        name: 'Add Inventsion',
+        url: '/dashboard/inventsions/add',
+        icon: 'icon-add'
       },
-      {
-        name: 'Flags',
-        url: '/icons/flags',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Font Awesome',
-        url: '/icons/font-awesome',
-        icon: 'icon-star',
-        badge: {
-          variant: 'secondary',
-          text: '4.7'
-        }
-      },
-      {
-        name: 'Simple Line Icons',
-        url: '/icons/simple-line-icons',
-        icon: 'icon-star'
-      }
+    
     ]
   },
+
+  
+];
+
+export const navItemsClient: INavData[] = [
+ 
+ 
   {
-    name: 'Notifications',
-    url: '/notifications',
-    icon: 'icon-bell',
-    children: [
-      {
-        name: 'Alerts',
-        url: '/notifications/alerts',
-        icon: 'icon-bell'
-      },
-      {
-        name: 'Badges',
-        url: '/notifications/badges',
-        icon: 'icon-bell'
-      },
-      {
-        name: 'Modals',
-        url: '/notifications/modals',
-        icon: 'icon-bell'
-      }
-    ]
-  },
-  {
-    name: 'Widgets',
-    url: '/widgets',
-    icon: 'icon-calculator',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
-  },
-  {
-    divider: true
-  },
-  {
-    title: true,
-    name: 'Extras',
-  },
-  {
-    name: 'Pages',
-    url: '/pages',
-    icon: 'icon-star',
-    children: [
-      {
-        name: 'Login',
-        url: '/login',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Register',
-        url: '/register',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Error 404',
-        url: '/404',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Error 500',
-        url: '/500',
-        icon: 'icon-star'
-      }
-    ]
-  },
-  {
-    name: 'Disabled',
+    name: 'Dashboard',
     url: '/dashboard',
-    icon: 'icon-ban',
-    badge: {
-      variant: 'secondary',
-      text: 'NEW'
-    },
-    attributes: { disabled: true },
-  },
-  {
-    name: 'Download CoreUI',
-    url: 'http://coreui.io/angular/',
-    icon: 'icon-cloud-download',
-    class: 'mt-auto',
-    variant: 'success',
-    attributes: { target: '_blank', rel: 'noopener' }
-  },
-  {
-    name: 'Try CoreUI PRO',
-    url: 'http://coreui.io/pro/angular/',
-    icon: 'icon-layers',
-    variant: 'danger',
-    attributes: { target: '_blank', rel: 'noopener' }
+    icon: 'icon-speedometer',
+   
   }
+ 
+ 
+  
+
+  
 ];

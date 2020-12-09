@@ -1,0 +1,24 @@
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>name</th>
+      
+      
+      <th style="width: 125px;">controle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let enum of enums;let i=index" >
+      <td>{{ i}}</td>
+      <td>{{ enum.name }}</td>
+      
+      <td>
+        <a class="btn btn-danger"  (click)="delete(enum)"><i class="fa fa-trash"></i></a>
+        <a class="btn btn-warning" (click)="edit(enum)" ><i class="fa fa-edit"></i></a>
+      
+      </td>
+    </tr>
+  </tbody>
+  </table>
+  

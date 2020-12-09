@@ -1,0 +1,39 @@
+<!-- <sppiner *ngIf="isLoad"></sppiner> -->
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div style="margin-top: 10px;"  class="alert alert-success" *ngIf='message'>{{message}}</div>
+        <div class="col-md-8 mx-auto">
+          <div class="alert alert-danger" *ngIf='invalidtLogin'>has an errors </div>
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form [formGroup]="form" (submit)="create()">
+                <h1>User</h1>
+                <p class="text-muted">Save Enumeration value</p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                  </div>
+                  <input 
+                  [class.is-invalid]="(isValid('value') || errors?.value)" 
+                 [class.is-valid]="isInputValid('value')" 
+                  [(ngModel)]="enum.value" formControlName="value" name="value"  type="text" class="form-control" 
+                  placeholder="Name" autocomplete="uservalue" required>
+                </div>
+                <span style="color: red;" *ngIf="isValid('value') || errors?.value ">
+                  <span *ngFor="let err of messageError('value')">{{ err }}</span>
+                  <span *ngFor="let err of errors?.value">{{ err }}</span>
+                </span>
+
+               
+                <button companie="submit"  class="btn btn-block btn-success">Save value</button>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

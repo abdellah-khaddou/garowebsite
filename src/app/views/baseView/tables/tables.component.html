@@ -1,0 +1,27 @@
+<ng-container *ngIf="data">
+  <div class="table-responsive" >
+      
+          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+              <thead>
+                  <tr>
+                      <th *ngFor="let header of settings.columns">{{ header.title }}</th>
+                      <th >Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let release of data">
+                      <ng-container *ngFor="let column of settings.columns">
+                          <td> {{ release[column.field]}} </td>
+                         
+                      </ng-container>
+                       <td>
+                            <a class="btn btn-danger"  (click)="delete(release)"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-warning" (click)="edit(release)" ><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-info"    (click)="show(release)"><i class="fa fa-eye"></i></a>
+                          </td>
+                    </tr>
+              </tbody>
+          </table>
+     
+  </div>
+</ng-container>
