@@ -7,17 +7,11 @@ import { UsersTablesComponent } from './tables/tables.component';
 
 
 const routes: Routes = [
-  {
-      path:'users',
-      children:[
+
         {path:'',component:UsersTablesComponent },
         {path:'edit',component:FormUserComponent },
         {path:'add',component:FormUserComponent },
         {path:'show',component:ProfileComponent },
-      ]
-  }
-   
-
   ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

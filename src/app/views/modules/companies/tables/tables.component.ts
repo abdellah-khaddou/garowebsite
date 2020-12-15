@@ -2,9 +2,10 @@
 import { Component } from '@angular/core';
 import { Companie } from '../companies.interface';
 import { CompanieService } from '../services/companie.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: 'tables.component.html',
@@ -14,7 +15,7 @@ import { AuthService } from '../../../../services/auth.service';
 export class CompaniesTablesComponent {
 
 
-  companies: Companie[] = [];
+  companies: Observable<Companie>;
   settings={
     module:"companies",
     columns:[]
@@ -35,10 +36,10 @@ export class CompaniesTablesComponent {
   }
   chargeData(){
     
-      // this.companieService.get().subscribe(companies=>{
-      //   this.companies=companies.companies;
+    this.companies= this.companieService.get().pipe(map(companies=>{
+        return companies.companies;
         
-      // })
+      }))
     
 
   }

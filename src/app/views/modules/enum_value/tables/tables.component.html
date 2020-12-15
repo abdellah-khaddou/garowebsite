@@ -10,8 +10,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let enum of enums;let i=index" >
-      <td>{{ i}}</td>
-      <td>{{ enum.name }}</td>
+      <td>{{ i+1}}</td>
+      <td>{{ enum.value }}</td>
       
       <td>
         <a class="btn btn-danger"  (click)="delete(enum)"><i class="fa fa-trash"></i></a>

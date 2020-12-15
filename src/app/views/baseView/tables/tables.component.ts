@@ -19,7 +19,8 @@ export class DataTablesComponent implements OnInit {
 
 
 
-    @Input() data
+    @Input() data :Observable<any>
+    thisData:any
     @Input() settings
     @Input() loading
     @Output() public event: EventEmitter<any> = new EventEmitter<any>();
@@ -29,9 +30,13 @@ export class DataTablesComponent implements OnInit {
     public ngOnInit(): void {
         this.dtOptions = {
           pagingType: 'full_numbers',
-          pageLength: 2,
+          pageLength: 10,
         };
-        console.log(this.data)
+        this.data.subscribe(data=>{
+            this.thisData=data;
+            this.dtTrigger.next();
+        })
+        
     }
 
     edit(release){
@@ -53,11 +58,11 @@ export class DataTablesComponent implements OnInit {
     }
 
     ngAfterViewInit(): void {
-        if(this.data)
+         if(this.data)
             this.dtTrigger.next();
     }
     ngAfterViewChecked(){
-        this.dtTrigger.next();
+        //this.dtTrigger.next();
     }
     ngOnDestroy(): void {
         // Do not forget to unsubscribe the event

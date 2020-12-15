@@ -25,7 +25,7 @@ export class EnumTablesComponent {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 10
     };
    
       this.charge();
@@ -44,7 +44,7 @@ export class EnumTablesComponent {
     
     if(res){
       this.enumService.delete({_id:value._id}).subscribe(res=>{
-        this.charge();
+        this.dtTrigger.next();
       });
     }
   }

@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs';
+import { Update } from '@ngrx/entity';
+
 
 import { error } from 'protractor';
 import { Component, OnInit } from '@angular/core';
@@ -9,6 +12,10 @@ import { RedirectService } from '../../../../../services/redirect.service';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { CompanieService } from '../../../companies/services/companie.service';
+import * as fromUsers from '../../store/state.reducer'
+import * as userActions from "../../store/state.action"
+import { Store } from '@ngrx/store';
+import { User } from '../../classes/user.interface';
 
 
 @Component({
@@ -20,14 +27,15 @@ export class FormUserComponent implements OnInit {
   form:FormGroup;
   errors:any;
   invalidtLogin=false;
-  user:any ={};
+  user:any={};
   isLoad = false;
-  message;
+  message; 
   constructor(
     private userService: UserService,
     private error: ErorrFrormService,
     private route :ActivatedRoute,
     private auth:AuthService,
+    private store:Store<fromUsers.AppState>,
     private redirect:RedirectService,
     private companieService:CompanieService
   ) {
@@ -61,7 +69,7 @@ export class FormUserComponent implements OnInit {
         Validators.minLength(4),
         Validators.maxLength(80),
       ]),
-      companie: new FormControl('', [
+      company: new FormControl('', [
       
       ])
      
@@ -79,25 +87,24 @@ export class FormUserComponent implements OnInit {
     return this.error.isInputvalid(control,this.form)
   }
   create(){
-   
-    this.isLoad = true
-     this.userService.create(this.user).subscribe(res=>{
-        if(res){
-            this.redirect.redirectToUsers() 
-        }
-         this.isLoad = false
-        
-     },error=>{
-       this.errors =  error.error.error;
-      this.isLoad = false
-     });
- 
+    if(this.user._id)
+        this.store.dispatch(new userActions.UpdateUser(this.user))
+    else
+         new userActions.Create(this.user)
+
+    
   }
   getEdit(id){
-    this.userService.search({_id:id}).subscribe(user=>{ 
+
+    this.store.dispatch(new userActions.LoadOne(id))
+    var user$ :Observable<any> = this.store.select(fromUsers.getCurrentUser);
+    user$.subscribe(user=>this.user=user)
+
+    //this.store.subscribe(user=>{this.user=user})
+    // this.userService.search({_id:id}).subscribe(user=>{ 
       
-      if(user)this.user =user;
-    })
+    //   if(user)this.user =user;
+    // })
   }
 
 }

@@ -7,7 +7,9 @@ import { DataTablesModule } from 'angular-datatables';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormCompanieComponent } from './forms/form/form.component';
 import { DetailsComponent } from './details/details.component';
-import { UserModule } from '../users/user.module';
+import { CompaniesComponent } from './index/companies.component';
+import { companiesRoutingModule } from './companie.routing';
+import { SharedModule } from '../shared.module';
 
 
 
@@ -15,10 +17,12 @@ import { UserModule } from '../users/user.module';
 
 @NgModule({
   declarations: [
-    
+    CompaniesComponent,
     CompaniesTablesComponent,
     FormCompanieComponent,
     DetailsComponent,
+    
+     
     
     
   ],
@@ -26,8 +30,9 @@ import { UserModule } from '../users/user.module';
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,
-    DataTablesModule,
-    UserModule,
+    companiesRoutingModule,
+    SharedModule
+    
 
 
    

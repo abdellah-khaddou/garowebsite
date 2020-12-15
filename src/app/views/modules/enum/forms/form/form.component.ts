@@ -71,7 +71,7 @@ export class FormEnumComponent implements OnInit {
         if(res){
           
             this.redirect.redirectToenums()
-            this.message = 'register Your Registration Success'
+            this.message = ' Your save Success'
             
           
         }
@@ -89,7 +89,7 @@ export class FormEnumComponent implements OnInit {
   }
   getEdit(id){
     this.enumService.search({_id:id}).subscribe(res=>{
-      if(res)this.enum =res;
+      if(res)this.enum =res[0];
 
     })
   }

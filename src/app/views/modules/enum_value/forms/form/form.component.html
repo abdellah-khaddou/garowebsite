@@ -26,8 +26,27 @@
                   <span *ngFor="let err of errors?.value">{{ err }}</span>
                 </span>
 
+                <div class="form-group">
+                  <label for="enumeration">Enumeration</label>
+                  <select class="form-control" id="enumeration" [(ngModel)]="enum.EnumID"
+                  [class.is-invalid]="(isValid('enumeration') || errors?.enumeration)" 
+                   [class.is-valid]="isInputValid('enumeration')" 
+                  formControlName="enumeration" name="enumeration"  class="form-control" id="enumeration"
+                  >
+        
+                    <option *ngFor="let e of enumerations" [selected]="e._id==enum?.EnumID" 
+                    [value]="e._id">{{e.name}}</option>
+                    
+                  </select>
+                  <div [class.invalid-feedback]="isValid('enumeration') || errors?.enumeration"
+                    *ngIf="isValid('enumeration') || errors?.enumeration ">
+                    <span *ngFor="let err of messageError('enumeration')">{{ err }}</span>
+                    <span *ngFor="let err of errors?.enumeration">{{ err }}</span>
+                  </div>
+                </div> 
+
                
-                <button companie="submit"  class="btn btn-block btn-success">Save value</button>
+                <button type="submit"  class="btn btn-block btn-success">Save value</button>
               </form>
             </div>
             

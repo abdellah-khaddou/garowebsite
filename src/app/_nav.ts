@@ -68,6 +68,25 @@ export const navItemsAdmin: INavData[] = [
     
     ]
   },
+  {
+    name: 'Enumeration Value',
+    url: '/dashboard/enumerations_value',
+    icon: 'icon-wrench',
+    children: [
+      {
+        name: 'All',
+        url: '/dashboard/enumerations_value',
+        icon: 'icon-book-open'
+      },
+      {
+        name: 'Add Enumeration value',
+        url: '/dashboard/enumerations_value/add',
+        icon: 'icon-penci'
+      },
+    
+    ]
+  },
+  
   
 ];
 

@@ -5,6 +5,7 @@ import { EnumTablesComponent } from './tables/tables.component';
 import { DataTablesModule } from 'angular-datatables';
 import { FormEnumComponent } from './forms/form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { enumRoutingModule } from './enum.routing';
 
 
 
@@ -27,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    enumRoutingModule
 
    
   ],

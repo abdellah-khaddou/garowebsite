@@ -1,10 +1,11 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EnumTablesComponent } from './tables/tables.component';
 import { DataTablesModule } from 'angular-datatables';
-import { FormEnumComponent } from './forms/form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { enumValueRoutingModule } from './enum-value.routing';
+import { FormEnumValueComponent } from './forms/form/form.component';
+import { EnumValueTablesComponent } from './tables/tables.component';
 
 
 
@@ -16,8 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     
-    EnumTablesComponent,
-    FormEnumComponent,
+    FormEnumValueComponent,
+    EnumValueTablesComponent
    
     
     
@@ -27,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule, 
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    enumValueRoutingModule
 
    
   ],
@@ -35,4 +37,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     
   ]
 })
-export class EnumModule { }
+export class EnumValueModule { }

@@ -1,3 +1,4 @@
+import { EnumService } from './../../../enum/services/service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../../../services/auth.service';
@@ -13,12 +14,13 @@ import { EnumValueService } from '../../services/service.service';
   selector: 'form-enum',
   templateUrl: 'form.component.html'
 })
-export class FormEnumComponent implements OnInit {
+export class FormEnumValueComponent implements OnInit {
   
   form:FormGroup;
   errors:any;
   invalidtLogin=false;
   enum:any ={};
+  enumerations;
   isLoad = false;
   message;
   constructor(
@@ -26,11 +28,15 @@ export class FormEnumComponent implements OnInit {
     private error: ErorrFrormService,
     private route :ActivatedRoute,
     private redirect:RedirectService,
+    private enumService:EnumService,
   ) {
     let id = this.route.snapshot.queryParams.id;
     if(id){
       this.getEdit(id);
     }
+    this.enumService.get().subscribe(res=>{
+      this.enumerations = res
+    })
 
     
   }

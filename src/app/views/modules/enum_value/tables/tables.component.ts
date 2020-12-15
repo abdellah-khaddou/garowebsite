@@ -1,7 +1,7 @@
 import { EnumValueService } from '../services/service.service';
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Enum } from '../enum.interface';
+import { EnumValue } from '../enum-value.interface';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
@@ -11,12 +11,12 @@ import { AuthService } from '../../../../services/auth.service';
   styleUrls: ['./tables.component.css']
 
 })
-export class EnumTablesComponent {
+export class EnumValueTablesComponent {
 
   dtOptions: DataTables.Settings = {};
-  enums: Enum[] = [];
+  enums: EnumValue[] = [];
   columns;
-  dtTrigger = new Subject<Enum>();
+  dtTrigger = new Subject<EnumValue>();
 
   constructor(private enumValueService: EnumValueService,private router:Router,private auth:AuthService) {
     
@@ -25,7 +25,7 @@ export class EnumTablesComponent {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 10
     };
    
       this.charge();
@@ -43,17 +43,17 @@ export class EnumTablesComponent {
     
     if(res){
       this.enumValueService.delete({_id:value._id}).subscribe(res=>{
-        this.charge();
+        this.dtTrigger.next();
       });
     }
   }
 
   edit(value){
     console.log(value)
-    this.router.navigate(['/dashboard/enumerations/edit'],{ queryParams: { id: value._id } });
+    this.router.navigate(['/dashboard/enumerations_value/edit'],{ queryParams: { id: value._id } });
   }
   show(value){
-    this.router.navigate(['/dashboard/enumerations/show'],{ queryParams: { id: value._id } });
+    this.router.navigate(['/dashboard/enumerations_value/show'],{ queryParams: { id: value._id } });
   }
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event

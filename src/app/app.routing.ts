@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
-import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
@@ -12,8 +11,12 @@ import { RegisterComponent } from './views/register/register.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full', 
+    redirectTo:'dashboard',
+    pathMatch:'full'
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./views/modules/base.module').then(m => m.BaseModule),
   },
   {
     path: '404',
@@ -47,7 +50,11 @@ export const routes: Routes = [
   { path: '**', component: P404Component }
 ];
 
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+exports: [RouterModule]
+})
+export class AppRoutingModule { }
 
-export const Routing =  RouterModule.forRoot(routes);
   
 

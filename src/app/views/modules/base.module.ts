@@ -1,4 +1,4 @@
-import { CompanieModule } from './companies/companies.module';
+import { CompanieModule } from './companies/companie.module';
 import { UserModule } from './users/user.module';
 
 import { UsersComponent } from './users/index/users.component';
@@ -9,8 +9,11 @@ import { NgModule } from '@angular/core';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { DataTablesModule } from 'angular-datatables';
-import { DataTablesComponent } from '../baseView/tables/tables.component';
 import { BaseRoutingModule } from './base-routing.module';
+import { DefaultLayoutComponent } from '../../containers/default-layout/default-layout.component';
+import { AppAsideModule, AppFooterModule, AppHeaderModule, AppSidebarModule } from '@coreui/angular';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { SharedModule } from './shared.module';
 
 
 
@@ -22,23 +25,29 @@ import { BaseRoutingModule } from './base-routing.module';
   imports: [
     CommonModule,
     FormsModule,
-    BrowserModule,
-    UserModule,
-    CompanieModule,
-    DataTablesModule,
-    CommonModule,
-    BaseRoutingModule
+    
+    
+    BaseRoutingModule,
+    AppAsideModule,
+    AppFooterModule,
+    AppHeaderModule,
+    AppSidebarModule,
+    PerfectScrollbarModule,
+    
+    
 
   ],
   declarations: [
     DashboardComponent,
+    DefaultLayoutComponent,
+    
+    
     
     
     
   ],
   exports:[
     DashboardComponent,
-    
     
   ]
 })

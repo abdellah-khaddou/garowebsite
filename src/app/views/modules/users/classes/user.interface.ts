@@ -1,7 +1,7 @@
 export interface User{
-    _id:BigInteger;
+    _id:string;
     name:string;
     login:string;
     companyName:string;
-    company:object;
+    company:any;
 }
