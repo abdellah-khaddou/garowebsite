@@ -9,9 +9,8 @@ import { usersRoutingModule } from './user.routing';
 import { ButtonsComponent } from '../../baseView/buttons/buttons.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule,Actions } from '@ngrx/effects';
-import { userReducer } from './store/state.reducer';
-import { UserEffect } from './store/state.effect';
 import { SharedModule } from '../shared.module';
+import { UsersComponent } from './index/users.component';
 
 
 
@@ -25,7 +24,8 @@ import { SharedModule } from '../shared.module';
     UsersTablesComponent,
     FormUserComponent,
     ProfileComponent,
-    ButtonsComponent
+    ButtonsComponent,
+    UsersComponent
     
     
  
@@ -36,10 +36,6 @@ import { SharedModule } from '../shared.module';
     ReactiveFormsModule,
     usersRoutingModule,
     SharedModule,
-    StoreModule.forFeature('users',userReducer),
-   EffectsModule.forFeature([UserEffect]),
-    
-
    
   ],
   exports:[

@@ -20,9 +20,10 @@ export class FormCompanieComponent implements OnInit {
   valueType ;
   form:FormGroup;
   errors:any;
-  companie={};
+  companie:any={};
   isLoad = false;
   message="edit Companie success"
+  invalidtLogin:Boolean
   constructor( 
     private error: ErorrFrormService,
     private companieService :CompanieService,

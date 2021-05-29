@@ -21,6 +21,9 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { DataTablesModule } from 'angular-datatables';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { appeffects } from './store/app.effects';
+import * as fromAppStore  from './store/app.reducer';
+
 
 
 import {
@@ -42,8 +45,10 @@ import { SppinerComponent } from './views/spinner/spinner.component';
 import { EnumModule } from './views/modules/enum/enum.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from '../environments/environment';
 
-
+const config: SocketIoConfig = { url: environment.url, options: {} };
 
 
 
@@ -65,12 +70,10 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientModule,
     EnumModule,
     AppRoutingModule,
-     StoreModule.forRoot({}),
-     StoreDevtoolsModule.instrument(),
-     EffectsModule.forRoot(),
-    
-    
-
+    StoreModule.forRoot(fromAppStore.appReducer),
+    EffectsModule.forRoot(appeffects),
+    StoreDevtoolsModule.instrument(),
+    SocketIoModule.forRoot(config),
     ChartsModule
   ],
   declarations: [

@@ -16,7 +16,6 @@ export class RegisterComponent implements OnInit {
   form:FormGroup;
   errors:any;
   invalidtLogin=false;
-  data = environment.laravel;
   isLoad = false;
   valueType
   constructor(
@@ -24,7 +23,7 @@ export class RegisterComponent implements OnInit {
     private auth: AuthService,
     private redirect:RedirectService, 
     private error: ErorrFrormService,
-    //private route :ActivatedRoute
+    
   ) {
     this.valueType=['Transporteur','Chargeur'];
   }

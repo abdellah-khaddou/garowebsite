@@ -15,14 +15,7 @@ const routes: Routes = [
 		// canActivate:[AuthGardService],
 		children:[
 			
-			 //{ path: '', redirectTo:'companies'  ,pathMatch: 'full'},
-			//  {
-			// 	path:'', 
-			// 	data:{
-			// 		title:"dashboard"
-			// 	},
-			// 	redirectTo:'companies'
-			//  },
+			
 			 {
 				path: 'users',
 				
@@ -45,6 +38,24 @@ const routes: Routes = [
 				path: 'enumerations_value',
 				  
 					loadChildren: () => import('../modules/enum_value/enum-value.module').then(m => m.EnumValueModule),
+			
+			},
+			{
+				path: 'products',
+				  
+					loadChildren: () => import('../modules/products/module.module').then(m => m.ProductModule),
+			
+			},
+			{
+				path: 'orders',
+				  
+					loadChildren: () => import('../modules/orders/module.module').then(m => m.OrderModule),
+			
+			},
+			{
+				path: 'categories',
+				  
+					loadChildren: () => import('../modules/categories/module.module').then(m => m.CatagoriesModule),
 			
 			},
 			

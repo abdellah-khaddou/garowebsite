@@ -51,6 +51,64 @@ export const navItemsAdmin: INavData[] = [
     ]
   },
   {
+    name: 'orders',
+    url: '/dashboard/orders',
+    icon: 'icon-rocket',
+    children: [
+      {
+        name: 'All',
+        url: '/dashboard/orders',
+        icon: 'icon-grid'
+      },
+      {
+        name: 'Add Order',
+        url: '/dashboard/orders/add',
+        icon: 'icon-plus'
+      },
+    
+    
+    ]
+  },
+  {
+    name: 'Products',
+    url: '/dashboard/products',
+    icon: 'icon-rocket',
+    children: [
+      {
+        name: 'All',
+        url: '/dashboard/products',
+        icon: 'icon-grid'
+      },
+      {
+        name: 'Add Product',
+        url: '/dashboard/products/add',
+        icon: 'icon-plus'
+      },
+    
+    
+    ]
+  },
+  {
+    name: 'Categories',
+    url: '/dashboard/categories',
+    icon: 'icon-rocket',
+    children: [
+      {
+        name: 'All',
+        url: '/dashboard/categories',
+        icon: 'icon-grid'
+      },
+      {
+        name: 'Add Product',
+        url: '/dashboard/categories/add',
+        icon: 'icon-plus'
+      },
+    
+    
+    ]
+  },
+  
+  {
     name: 'Enumeration',
     url: '/dashboard/enumerations',
     icon: 'icon-wrench',
@@ -91,60 +149,4 @@ export const navItemsAdmin: INavData[] = [
 ];
 
 
-export const navItemsEmploye: INavData[] = [
-  {
-    name: 'Dashboard',
-    url: '/dashboard',
-    icon: 'icon-speedometer',
-   
-  },
-  
-  {
-    title: true,
-    name: 'Devices'
-  },
-  {
-    name: 'Device',
-    url: '/dashboard/devices',
-    icon: 'icon-cursor',
-    children: [
-      {
-        name: 'Add Device',
-        url: '/dashboard/devices/add',
-        icon: 'icon-cursor'
-      },
-    
-    ]
-  },
-  {
-    name: 'Inventsion',
-    url: '/dashboard/inventsions',
-    icon: 'icon-cursor',
-    children: [
-      {
-        name: 'Add Inventsion',
-        url: '/dashboard/inventsions/add',
-        icon: 'icon-add'
-      },
-    
-    ]
-  },
 
-  
-];
-
-export const navItemsClient: INavData[] = [
- 
- 
-  {
-    name: 'Dashboard',
-    url: '/dashboard',
-    icon: 'icon-speedometer',
-   
-  }
- 
- 
-  
-
-  
-];

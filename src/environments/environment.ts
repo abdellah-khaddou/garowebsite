@@ -5,11 +5,6 @@
 
 export const environment = {
   production: false,
-  url:'http://localhost:3002/',
-  laravel :{
-      client_secret : 'vse8KkcS02nkRECu8koeQQscgD6zGbhgbmJPTOYW',
-      client_id : 2,
-      grant_type : "password",
-      scope : "*"
-  }
+  url:'https://azertx.herokuapp.com/',
+
 };

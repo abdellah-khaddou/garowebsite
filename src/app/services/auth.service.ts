@@ -56,16 +56,10 @@ export class AuthService implements OnInit {
   }
   
     cureentUser(){
-      let hedears = localStorage.getItem('token') ?
-      new HttpHeaders({
-        'Authorization': localStorage.getItem('token')
-       
-     }):
-      new HttpHeaders({'Authorization': "null"});
-      console.log(hedears);
-      this.baseCtrl.hedears = hedears;
       return this.baseCtrl.post('users','verifierToken',{token:localStorage.getItem('token')});
     }
- 
+    verifierToken(){
+      return this.cureentUser();
+    }
  
 }

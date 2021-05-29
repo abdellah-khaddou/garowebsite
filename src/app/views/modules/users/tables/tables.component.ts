@@ -4,9 +4,11 @@ import { User } from '../classes/user.interface';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 import { select, Store } from "@ngrx/store"
-import * as userAction from "../store/state.action"
 import { Subscription, Observable } from 'rxjs';
-import * as fromUsers from "../store/state.reducer"
+import * as fromApp from "../../../../store/app.reducer"
+import * as userAction from "../../../../store/users/users.action"
+import { selectUsers } from '../../../../store/users/users.reducer';
+
 @Component({
   templateUrl: 'tables.component.html',
   styleUrls: ['./tables.component.css']
@@ -15,27 +17,25 @@ import * as fromUsers from "../store/state.reducer"
 export class UsersTablesComponent {
 
 
-  users: User[] = [];
+  users: any[] = [];
   settings={
     module:"users",
     columns:[]
   };
- users$: Observable<User[]>
+ users$: Observable<any>
  errors$: Observable<any>
 
   constructor(
-    private userService: UserService,
     private router:Router,
-    private auth:AuthService ,
-    private store:Store<any>
+    private store:Store<fromApp.AppState>
     ) {
-    this.settings.columns =[{title:"Name",field:"name"},{title:"Login",field:"login"},{title:"Company",field:"companyName"}]
+    this.settings.columns =[{title:"Name",field:"name"},{title:"Login",field:"login"}]
    }
 
   ngOnInit(): void {
       this.store.dispatch(new userAction.Load())
-      this.users$ = this.store.pipe(select(fromUsers.getUsers))
-      this.errors$ = this.store.pipe(select(fromUsers.getUsersErrors))
+      this.users$ = this.store.select(selectUsers);
+     
   }
 
   actionEvent(obj){
@@ -50,7 +50,7 @@ export class UsersTablesComponent {
     let res = confirm("are you sure want to delete")
     console.log(user)
     if(res){
-      this.store.dispatch(new userAction.Delete(user._id))
+      //this.store.dispatch(new userAction.Delete(user._id))
     }
   }
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../services/user';
-import { navItemsAdmin,navItemsEmploye ,navItemsClient} from '../../_nav';
+import { navItemsAdmin} from '../../_nav';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,15 +29,10 @@ export class DefaultLayoutComponent {
     }
  }
   choixNav(){
-    //if(this.user.Com ==this.currentUser.role.admin ){
+    
       
       this.navItems = navItemsAdmin;
-    // }else if(this.user.role ==this.currentUser.role.employe){
-    //   this.navItems = navItemsEmploye;
-    // }else if(this.user.role ==this.currentUser.role.client){
-    //   this.navItems = navItemsClient;
-    // }
-
+  
   }
 
   logout(){

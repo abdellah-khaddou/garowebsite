@@ -6,6 +6,10 @@ import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 import { map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import * as fromApp from "../../../../store/app.reducer"
+import * as actions from "../../../../store/companies/companies.action"
+import { selectCompanies } from '../../../../store/companies/companies.reducer';
 
 @Component({
   templateUrl: 'tables.component.html',
@@ -18,37 +22,28 @@ export class CompaniesTablesComponent {
   companies: Observable<Companie>;
   settings={
     module:"companies",
-    columns:[]
+    columns:[{title:"Name",field:"name"},{title:"Email",field:"email"},
+    {title:"Tel",field:"tel"},{title:"Type",field:"type"}]
   };
+  companies$: Observable<any>;
 
 
-  constructor(private companieService: CompanieService,private router:Router,private auth:AuthService) {
-    this.settings.columns =[{title:"Name",field:"name"},{title:"Email",field:"email"},
-                            {title:"Tel",field:"tel"},{title:"Type",field:"type"}]
+  constructor(
+    private companieService: CompanieService,
+    private router:Router,
+    private store:Store<fromApp.AppState>) { }
+
+   ngOnInit(): void {
+    this.store.dispatch(new actions.Load())
+    this.companies$ = this.store.select(selectCompanies);
    
-   }
-
-  ngOnInit(): void {
-    
-  this.chargeData()
-   
-      
-  }
-  chargeData(){
-    
-    this.companies= this.companieService.get().pipe(map(companies=>{
-        return companies.companies;
-        
-      }))
-    
-
   }
   delete(companie){
     let res = confirm("are you sure want to delete")
     if(res){
       this.companieService.delete({_id:companie._id}).subscribe(res=>{
         if(res){ 
-          this.chargeData()
+          //this.chargeData()
         }
       });
     }
